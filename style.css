@@ -45,6 +45,91 @@ body {
   height: 45px;
 }
 
+.menu {
+  width: 100%;
+  height: 100%;
+  background-color: #00000099;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1;
+  display: flex;
+  justify-content: end;
+}
+
+.menu .checkmark {
+  width: 20px;
+  height: 20px;
+  color: #28BB25;
+  display: none;
+}
+
+.divNav {
+  display: flex;
+  flex-direction: column;
+  background-color: #FFFFFF;
+  width: 259px;
+  height: 100%;
+  
+}
+
+.headerMenu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 84px;
+}
+
+.tituloVisibilidade p,
+.headerMenu p {
+  font-size: 16px;
+  font-weight: 700;
+  text-align: center;
+  width: 80%;
+}
+
+.visibilidade,
+.listaDeUsuarios {
+  list-style: none;
+  padding: 0 16px;
+}
+
+.visibilidade li,
+.listaDeUsuarios li {
+  display: flex;
+  align-items: center;
+}
+
+.visibilidade li ion-icon,
+.listaDeUsuarios li ion-icon {
+  width: 25px;
+  height: 25px;
+  margin-right: 4px;
+}
+
+.visibilidade li p,
+.listaDeUsuarios li p {
+  display: flex;
+  align-items: center;
+  width: 194px;
+  height: 36px;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.tituloVisibilidade {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 66px;
+}
+
+.visible {
+  display: block !important;
+}
+
 .conteudo {
   margin-top: 106px;
 }
@@ -79,7 +164,6 @@ body {
 .divMensagem .data {
   color: #AAAAAA;
 }
-
 
 .footer {
   display: flex;
