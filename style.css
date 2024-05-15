@@ -4,3 +4,120 @@
   box-sizing: border-box;
 }
 
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(162, 162, 162);
+  width: 100%;
+  min-height: 100vh;
+  color: #000000;
+  font-family: "Roboto", sans-serif;
+}
+
+.container {
+  background-color: #F3F3F3;
+  width: 375px;
+  height: 667px;
+  position: relative;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #FFFFFF;
+  box-shadow: 0px 4px 6px 0px #0000000D;
+  width: 375px;
+  height: 80px;
+  padding: 0 22px;
+  position: absolute;
+  top: 0;
+}
+
+.header img {
+  width: 75px;
+  height: 53px;
+}
+
+.header ion-icon {
+  width: 45px;
+  height: 45px;
+}
+
+.conteudo {
+  margin-top: 106px;
+}
+
+.divMensagem {
+  background-color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 10px 8px;
+  margin-top: 4px;
+}
+
+.entrada {
+  background-color: #DCDCDC;
+}
+
+.reservado {
+  background-color: #FFDEDE;
+}
+
+.divMensagem p {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+.divMensagem span {
+  font-weight: bold;
+}
+
+.divMensagem .data {
+  color: #AAAAAA;
+}
+
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #FFFFFF;
+  border: 2px;
+  box-shadow: 0px -4px 6px 0px #0000000D;
+  width: 375px;
+  height: 80px;
+  padding: 0 18px;
+  position: absolute;
+  bottom: 0;
+}
+
+.divInput{
+  display: flex;
+  flex-direction: column;
+}
+
+.divInput input {
+  width: 299px;
+  height: 32px;
+  font-size: 18px;
+  font-weight: 400;
+  font-style: italic;
+  border: none;
+  padding-left: 2px;
+}
+
+.divInput span {
+  font-size: 14px;
+  font-weight: 300;
+  color: #505050;
+  padding-left: 2px;
+}
+
+.footer ion-icon {
+  width: 26px;
+  height: 26px;
+}
