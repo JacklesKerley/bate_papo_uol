@@ -53,7 +53,7 @@ body {
   top: 0;
   right: 0;
   z-index: 1;
-  display: flex;
+  display: none;
   justify-content: end;
 }
 
@@ -70,7 +70,6 @@ body {
   background-color: #FFFFFF;
   width: 259px;
   height: 100%;
-  
 }
 
 .headerMenu {
@@ -127,7 +126,7 @@ body {
 }
 
 .visible {
-  display: block !important;
+  display: flex !important;
 }
 
 .conteudo {
