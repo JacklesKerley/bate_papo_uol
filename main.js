@@ -31,6 +31,32 @@ setInterval(() => {
     })
 }, 5000);
 
+//Busca mensagens
+function buscarMensagens() {
+  axios
+    .get('https://mock-api.driven.com.br/api/v6/uol/messages/7b0bb360-7357-4f27-8c13-474005eccd8e')
+    .then(response => renderMensagens(response.data))
+    .catch(error => console.log(error))
+}
+
+//renderiza mensagens
+function renderMensagens(res) {
+  let mensagemRenderizada = document.querySelector('.conteudo')
+
+  let mensagens = ''
+
+  res.forEach(element => {
+    mensagens += `
+      <div class="divMensagem entrada">
+        <p class="mensagem"><span class="data">(${element.time})</span> <span>${element.from}</span> ${element.text}</p>
+      </div>
+    `
+  });
+   
+  mensagemRenderizada.innerHTML = mensagens
+
+}
+
 
 
 // menu de navegação
