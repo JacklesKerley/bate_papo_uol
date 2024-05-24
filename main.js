@@ -55,7 +55,13 @@ function renderMensagens(res) {
    
   mensagemRenderizada.innerHTML = mensagens
 
+  let scrollUltimaMensagem = mensagemRenderizada.lastElementChild;
+  scrollUltimaMensagem.scrollIntoView();
 }
+
+setInterval(() => {
+  buscarMensagens()
+}, 3000);
 
 
 
