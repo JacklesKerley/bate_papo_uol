@@ -111,10 +111,11 @@ body {
 .listaDeUsuarios li p {
   display: flex;
   align-items: center;
-  width: 194px;
+  width: 170px;
   height: 36px;
   font-size: 16px;
   font-weight: 400;
+  overflow-x: hidden;
 }
 
 .tituloVisibilidade {
@@ -133,6 +134,10 @@ body {
   margin-top: 106px;
   overflow-y: scroll;
   height: 470px;
+}
+
+.conteudo::-webkit-scrollbar {
+  display: none;
 }
 
 .divMensagem {
