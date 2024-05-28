@@ -1,5 +1,4 @@
 let UUID = '7b0bb360-7357-4f27-8c13-474005eccd8e'
-let destinatario = 'todos'
 
 //---------- Entrada de participante ----------
 let usuario = {}
@@ -37,6 +36,7 @@ setInterval(() => {
 // ---------- Lista de Participantes ----------
 let renderParticipantes = document.querySelector('.listaDeUsuarios')
 let listaDeParticipantes = ["todos"]
+let destinatario = 'todos'
 
 function buscarParticipantes() {
   axios
@@ -89,10 +89,23 @@ function renderListaDeParticipantes() {
 
 function definirSelecionando(i) {
   let selecionado = document.querySelector(`#${i}`)
-  console.log(selecionado)
   if (selecionado) {
     selecionado.classList.toggle('visible')
   }
+
+  mudarTextoEnvio()
+}
+
+function selecionarParticipante(participante) {
+  let selecionado = document.querySelector('.checkmark.visible')
+  let btnCheck = participante.querySelector('.checkmark')
+
+  btnCheck.classList.toggle('visible')
+  selecionado.classList.toggle('visible')
+
+  destinatario = participante.querySelector('p').textContent
+
+  mudarTextoEnvio()
 }
 
 setInterval(() => {
@@ -144,43 +157,45 @@ setInterval(() => {
 }, 3000)
 
 
-
-
-
-
-
-
-//---------------------
-
-
-
-
-
-
-function selecionarParticipante(participante) {
-  let selecionado = document.querySelector('.checkmark.visible')
-  let btnCheck = participante.querySelector('.checkmark')
+// ---------- Envio de Mensagens  ----------
+function escolherVisibilidade(element) {
+  let selecionado = document.querySelector('.visivel.visible')
+  let btnCheck = element.querySelector('.visivel')
 
   btnCheck.classList.toggle('visible')
   selecionado.classList.toggle('visible')
 
-  destinatario = participante.querySelector('p').textContent
-  
-  console.log(participante)
-  console.log(destinatario)
+  mudarTextoEnvio()
 }
 
-//Enviar mensagem
+function prepararMensagem() {
+  let visibilidade = document.querySelector('.visivel.visible').previousElementSibling.textContent
+  let envio = document.querySelector('.divInput input')
+  let mensagemEnviada = envio.value
+  let tipo = ''
+  
+  switch (visibilidade) {
+    case 'Público':
+      tipo = 'message'
+      break;
+    default:
+      tipo = 'private_message'
+      break;
+  }
 
-
-function enviarMensagem() {
   let mensagem = {
     from: usuario.name,
     to: destinatario,
-    text: "mensagem teste 5",
-    type: "private_message"
+    text: mensagemEnviada,
+    type: tipo
   }
 
+  enviarMensagem(mensagem)  
+
+  envio.value = ''
+}
+
+function enviarMensagem(mensagem) {
   axios
     .post('https://mock-api.driven.com.br/api/v6/uol/messages/' + UUID, mensagem)
     .then(response => {
@@ -190,9 +205,29 @@ function enviarMensagem() {
     .catch(error => console.log('mensagem nao enviada'))
 }
 
-// setInterval(() => {
-//   enviarMensagem()
-// }, 6000);
+function mudarTextoEnvio() {
+  let selecionado = document.querySelector('.visivel.visible')
+  let textoDeEnvio = document.querySelector('.divInput span')
+
+  if (selecionado.previousElementSibling.textContent !== 'Público'){
+    textoDeEnvio.innerText = `Enviando para ${destinatario} (reservadamente)`
+  } else {
+    textoDeEnvio.innerText = `Enviando para ${destinatario} (público)`
+  }
+}
+
+document.addEventListener('DOMContentLoaded', (event) => {
+  let envio = document.querySelector('.divInput input')
+
+  envio.addEventListener('keydown', function(e) {
+    if (envio.value) {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        prepararMensagem();
+      }
+    }
+  })
+})
 
 
 

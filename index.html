@@ -29,11 +29,6 @@
         </div>
   
         <ul class="listaDeUsuarios">
-          <!-- <li onclick="selecionarParticipante(this)">
-            <ion-icon name="people"></ion-icon>
-            <p>Todos</p>
-            <ion-icon name="checkmark-sharp" class="checkmark visible"></ion-icon>
-          </li> -->
         </ul>
   
         <div class="tituloVisibilidade">
@@ -41,15 +36,15 @@
         </div>
   
         <ul class="visibilidade">
-          <li>
+          <li onclick="escolherVisibilidade(this)">
             <ion-icon name="lock-open"></ion-icon>
             <p class="test">Público</p>
-            <ion-icon name="checkmark-sharp" class="checkmark visible"></ion-icon>
+            <ion-icon name="checkmark-sharp" class="checkmark visivel visible"></ion-icon>
           </li>
-          <li>
+          <li onclick="escolherVisibilidade(this)">
             <ion-icon name="lock-closed"></ion-icon>
             <p>Reservadamente</p>
-            <ion-icon name="checkmark-sharp" class="checkmark"></ion-icon>
+            <ion-icon name="checkmark-sharp" class="checkmark visivel"></ion-icon>
           </li>
         </ul>
 
@@ -72,9 +67,9 @@
     <footer class="footer">
       <div class="divInput">
         <input type="text" placeholder="Escreva aqui...">
-        <span>Enviando para Todos (público)</span>
+        <span></span>
       </div>
-      <ion-icon name="paper-plane-outline"></ion-icon>
+      <ion-icon name="paper-plane-outline" onclick="prepararMensagem()"></ion-icon>
     </footer>
 
   </div>
