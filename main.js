@@ -82,6 +82,8 @@ function renderListaDeParticipantes() {
     definirSelecionando(destinatario)
   } else {
     definirSelecionando('todos')
+    destinatario = 'todos'
+    mudarTextoEnvio()
   }
 
   listaDeParticipantes = ["todos"]
@@ -125,6 +127,7 @@ function buscarMensagens() {
 
 function renderMensagens(res) {
   res.forEach(element => {
+
     if (element.type === 'status') {
       mensagens += `
         <div class="divMensagem entrada">
@@ -138,11 +141,13 @@ function renderMensagens(res) {
         </div>
       `
     } else {
-      mensagens += `
+      if (element.to === 'todos'|| element.to === usuario.name) {
+        mensagens += `
         <div class="divMensagem reservado">
           <p class="mensagem"><span class="data">(${element.time})</span> <span>${element.from}</span> reservadamente para <span>${element.to}</span>: ${element.text}</p>
         </div>
       `
+      }
     }
   });
    
@@ -215,21 +220,6 @@ function mudarTextoEnvio() {
     textoDeEnvio.innerText = `Enviando para ${destinatario} (público)`
   }
 }
-
-document.addEventListener('DOMContentLoaded', (event) => {
-  let envio = document.querySelector('.divInput input')
-
-  envio.addEventListener('keydown', function(e) {
-    if (envio.value) {
-      if (e.key === 'Enter') {
-        e.preventDefault();
-        prepararMensagem();
-      }
-    }
-  })
-})
-
-
 
 
 // menu de navegação
