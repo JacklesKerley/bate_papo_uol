@@ -141,7 +141,7 @@ function renderMensagens(res) {
         </div>
       `
     } else {
-      if (element.to === 'todos'|| element.to === usuario.name) {
+      if (element.to === 'todos'|| element.to === usuario.name || element.from === usuario.name) {
         mensagens += `
         <div class="divMensagem reservado">
           <p class="mensagem"><span class="data">(${element.time})</span> <span>${element.from}</span> reservadamente para <span>${element.to}</span>: ${element.text}</p>
